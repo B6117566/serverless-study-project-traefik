@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: IngressRoute
 metadata:
   name: simpleingressroute
@@ -12,21 +12,3 @@ spec:
     services:
     - name: whoami
       port: 80
-
----
-apiVersion: v1
-kind: IngressRoute
-metadata:
-  name: ingressroutetls
-  namespace: dev
-spec:
-  entryPoints:
-    - websecure
-  routes:
-  - match: Host(`your.example.com`) && PathPrefix(`/tls`)
-    kind: Rule
-    services:
-    - name: whoami
-      port: 80
-  tls:
-    certResolver: myresolver
