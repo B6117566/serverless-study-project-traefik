@@ -2,12 +2,12 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: simpleingressroute
-  namespace: dev
+  namespace: default
 spec:
   entryPoints:
     - web
   routes:
-  - match: Host(`whoami.localhost`) && PathPrefix(`/notls`)
+  - match: Host(`your.example.com`) && PathPrefix(`/notls`)
     kind: Rule
     services:
     - name: whoami
@@ -18,12 +18,12 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: ingressroutetls
-  namespace: dev
+  namespace: default
 spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`whoami.localhost`) && PathPrefix(`/tls`)
+  - match: Host(`your.example.com`) && PathPrefix(`/tls`)
     kind: Rule
     services:
     - name: whoami
